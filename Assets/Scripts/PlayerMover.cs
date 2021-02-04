@@ -15,8 +15,8 @@ public class PlayerMover : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction = Vector3.zero;
-        direction.x = Input.GetAxis("Horizontal");
-        direction.z = Input.GetAxis("Vertical");
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.z = Input.GetAxisRaw("Vertical");
         direction.Normalize();
         if (direction.magnitude > 0)
         {
