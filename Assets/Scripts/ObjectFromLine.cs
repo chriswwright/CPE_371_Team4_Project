@@ -39,7 +39,6 @@ public class ObjectFromLine : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) && !isMouseDown)
         {
             LineRenderer lr = line_display.GetComponent<LineRenderer>();
-            lr.positionCount = 0;
             isMouseDown = true;
         }
         if (isMouseDown)
@@ -62,20 +61,13 @@ public class ObjectFromLine : MonoBehaviour
             line_display.transform.position = Vector3.zero;
             Mesh temp_mesh = new Mesh();
             LineRenderer lr = line_display.GetComponent<LineRenderer>();
+            lr.alignment = LineAlignment.TransformZ;
             for (int i = 0; i < lr.positionCount; ++i)
             {
                 lr.SetPosition(i, lr.GetPosition(i) - tablet.transform.position);
             }
-            lr.BakeMesh(temp_mesh, true);
+            lr.BakeMesh(temp_mesh, Camera.main, false);
             temp_mesh.RecalculateNormals();
-/*            Vector3[] temp_verticies = new Vector3[temp_mesh.vertexCount];
-            for (int i = 0; i < temp_mesh.vertexCount; ++i)
-            {
-                  temp_verticies[i] = temp_mesh.vertices[i] - tablet.transform.position;
-    
-            }
-*/
-//            temp_mesh.SetVertices(temp_verticies);
             placeholder = Instantiate(prefab);
             MeshFilter mf = placeholder.AddComponent<MeshFilter>();
             mf.mesh = temp_mesh;
@@ -93,7 +85,9 @@ public class ObjectFromLine : MonoBehaviour
             
             line_points = new List<Vector3>();
             isMouseDown = false;
+            lr.positionCount = 0;
             line_display.transform.position = tablet.transform.position;
+
         }
 
     }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    private CharacterController mover;
+    private Rigidbody rb;
     [SerializeField] private float speed = 4;
 
     private void Start()
     {
-        mover = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -21,17 +21,23 @@ public class PlayerMover : MonoBehaviour
         if (direction.magnitude > 0)
         {
             transform.eulerAngles = Quaternion.LookRotation(direction, Vector3.up).eulerAngles;
-            mover.SimpleMove(speed * direction);
+            rb.velocity = speed * direction;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 
-    void OnCollisionEnter(Collider collider)
+ /*   private void OnCollisionEnter(Collision collision)
     {
-        if (collider.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Block"))
         {
-            Vector3 direction = (transform.position - collider.transform.position);
-            collider.transform.position += (direction.normalized * speed);
+            Debug.Log("BONK");
+            Vector3 direction = transform.position - collision.transform.position;
+            direction.Normalize();
+            collision.rigidbody.MovePosition(direction * speed + collision.transform.position);
         }
-    }
+    }*/
 
 }

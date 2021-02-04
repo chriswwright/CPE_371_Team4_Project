@@ -12,11 +12,13 @@ public class SummonObject : MonoBehaviour
         if (block != null)
         {
             GameObject new_block = Instantiate(block);
-            new_block.AddComponent<MeshCollider>();
+            MeshCollider mc = new_block.AddComponent<MeshCollider>();
+            mc.convex = true;
             Rigidbody rb = new_block.AddComponent<Rigidbody>();
             new_block.tag = "Block";
             rb.useGravity = false;
-            rb.isKinematic = true;
+            rb.mass = 10;
+            rb.drag = 10;
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             new_block.transform.localScale = new_block.transform.localScale * scale;
             new_block.transform.position = transform.position + (transform.forward * offset);
