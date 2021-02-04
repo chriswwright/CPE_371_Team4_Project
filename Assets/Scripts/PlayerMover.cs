@@ -24,4 +24,14 @@ public class PlayerMover : MonoBehaviour
             mover.SimpleMove(speed * direction);
         }
     }
+
+    void OnCollisionEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Block"))
+        {
+            Vector3 direction = (transform.position - collider.transform.position);
+            collider.transform.position += (direction.normalized * speed);
+        }
+    }
+
 }
