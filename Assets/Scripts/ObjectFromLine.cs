@@ -9,9 +9,11 @@ public class ObjectFromLine : MonoBehaviour
 
     public Material line_material;
     public GameObject prefab;
-    
+
     private GameObject line_display;
     private GameObject placeholder;
+    public GameObject tablet;
+
     public bool isMouseDown = false;
     public List<Vector3> line_points = new List<Vector3>();
     void Start()
@@ -29,13 +31,28 @@ public class ObjectFromLine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) && !isMouseDown)
         {
             LineRenderer lr = line_display.GetComponent<LineRenderer>();
             lr.positionCount = 0;
             isMouseDown = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (isMouseDown)
+        {
+            Vector3 point_to_add = GetMouseCameraPoint();
+            if (PointWithinBounds(point_to_add))
+            {
+                line_points.Add(point_to_add);
+                line_display.GetComponent<LineRenderer>().positionCount = line_points.Count;
+                line_display.GetComponent<LineRenderer>().SetPosition(line_points.Count - 1, line_points[line_points.Count - 1]);
+            }
+            else
+            {
+                isMouseDown = false;
+            }
+
+        }
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButton(0) && !isMouseDown)
         {
             Mesh temp_mesh = new Mesh();
             line_display.GetComponent<LineRenderer>().BakeMesh(temp_mesh, true);
@@ -56,19 +73,21 @@ public class ObjectFromLine : MonoBehaviour
             line_points = new List<Vector3>();
             isMouseDown = false;
         }
-        if (isMouseDown)
-        {
-            line_points.Add(GetMouseCameraPoint());
-            line_display.GetComponent<LineRenderer>().positionCount = line_points.Count;
-            line_display.GetComponent<LineRenderer>().SetPosition(line_points.Count - 1, line_points[line_points.Count - 1]);
 
+    }
+    private bool PointWithinBounds(Vector3 check_point)
+    {
+        if (tablet.GetComponent<MeshCollider>().bounds.Contains(new Vector3(check_point.x, check_point.y, tablet.transform.position.z)))
+        {
+            return true;
         }
+        return false;
     }
 
     private Vector3 GetMouseCameraPoint()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10;
+        mousePos.z = 19.99f;
         return draw_camera.ScreenToWorldPoint(mousePos);
     }
 }
