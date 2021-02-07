@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    public Actor target;
+    public Actor[] targets;
     public bool on = false;
 
     private void Update()
     {
         if (on)
         {
-            target.ActionOn();
+            foreach (Actor target in targets)
+            {
+                target.ActionOn();
+            }
+            
         }
         else
         {
-            target.ActionOff();
+            foreach (Actor target in targets)
+            {
+                target.ActionOff();
+            }
         }
     }
 

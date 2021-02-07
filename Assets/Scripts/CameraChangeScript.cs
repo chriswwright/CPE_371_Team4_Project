@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraChangeScript : MonoBehaviour
 {
     [SerializeField] private GameObject tablet;
     private Animator animator;
+    [SerializeField] private Volume postProcessing;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,6 +17,7 @@ public class CameraChangeScript : MonoBehaviour
     {
         animator.SetBool("Drawing", !animator.GetBool("Drawing"));
         tablet.SetActive(!tablet.activeSelf);
+        postProcessing.enabled = !postProcessing.enabled;
     }
 
     void Update()
@@ -23,6 +26,8 @@ public class CameraChangeScript : MonoBehaviour
         {
             animator.SetBool("Drawing", !animator.GetBool("Drawing"));
             tablet.SetActive(!tablet.activeSelf);
+            postProcessing.enabled = !postProcessing.enabled;
+
         }
     }
 }

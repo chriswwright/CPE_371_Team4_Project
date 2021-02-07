@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Button : Switch
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         on = true;
     }
