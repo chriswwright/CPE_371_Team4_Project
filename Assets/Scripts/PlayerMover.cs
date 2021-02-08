@@ -29,15 +29,17 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
- /*   private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Vision"))
         {
-            Debug.Log("BONK");
-            Vector3 direction = transform.position - collision.transform.position;
-            direction.Normalize();
-            collision.rigidbody.MovePosition(direction * speed + collision.transform.position);
+            Enemy spotter = collision.gameObject.GetComponentInParent<Enemy>();
+            if(spotter != null)
+            {
+                spotter.Notice(transform);
+            }
+
         }
-    }*/
+    }
 
 }
