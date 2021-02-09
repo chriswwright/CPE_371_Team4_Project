@@ -1340,6 +1340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 0}
+  transparent_mats: {fileID: 0}
+  weight: 0
   offset: 2
   scale: 0.2
 --- !u!54 &89022758
@@ -3551,6 +3553,26 @@ PrefabInstance:
       propertyPath: max_draw_distance
       value: 33
       objectReference: {fileID: 0}
+    - target: {fileID: 3436246365198435944, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+        type: 3}
+      propertyPath: percentages.Array.data[0]
+      value: 
+      objectReference: {fileID: 193015488}
+    - target: {fileID: 3436246365198435944, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+        type: 3}
+      propertyPath: percentages.Array.data[1]
+      value: 
+      objectReference: {fileID: 193015487}
+    - target: {fileID: 3436246365198435944, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+        type: 3}
+      propertyPath: percentages.Array.data[2]
+      value: 
+      objectReference: {fileID: 193015486}
+    - target: {fileID: 3436246365198435944, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+        type: 3}
+      propertyPath: line_materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c0308aba35686541bd9754c7f4f515c, type: 2}
     - target: {fileID: 9099060528543424447, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
         type: 3}
       propertyPath: m_fontAsset
@@ -3723,6 +3745,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643ca2a3287bc4f4cb74882fb1f8f617, type: 3}
+--- !u!1 &193015486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2801947661740889318, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+    type: 3}
+  m_PrefabInstance: {fileID: 193015485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &193015487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5717384829997340751, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+    type: 3}
+  m_PrefabInstance: {fileID: 193015485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &193015488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9099060530500830697, guid: 643ca2a3287bc4f4cb74882fb1f8f617,
+    type: 3}
+  m_PrefabInstance: {fileID: 193015485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193972975
 GameObject:
   m_ObjectHideFlags: 0
@@ -23576,6 +23616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tablet: {fileID: 994760765}
+  postProcessing: {fileID: 1783941256}
 --- !u!1001 &1375700924
 PrefabInstance:
   m_ObjectHideFlags: 0

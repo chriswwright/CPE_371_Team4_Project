@@ -43,9 +43,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c14de2614fbcf646903a9f0e3f63e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draw_camera: {fileID: 0}
   line_width: 0.3
-  line_material: {fileID: 2100000, guid: 8afa98f383f84c94fa37dd6a63405d57, type: 2}
+  max_draw_distance: 19.99
+  ink_scalar: 1
+  line_materials:
+  - {fileID: 2100000, guid: eee57b15c03f3c14db04b19834f0bf23, type: 2}
+  - {fileID: 2100000, guid: 2d66e7852b92c354cb7c2d8ac23844cf, type: 2}
+  - {fileID: 2100000, guid: 5c0308aba35686541bd9754c7f4f515c, type: 2}
+  objects_needed: 000000
+  line_selector: 0
+  inkHolders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   prefab: {fileID: 4586924573125484772, guid: 3cb12cb7fe118a54da543d517cd861aa, type: 3}
+  player: {fileID: 0}
+  tablet: {fileID: 0}
+  percentages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ink_remaining:
+  - 100
+  - 100
+  - 100
+  max_ink:
+  - 100
+  - 100
+  - 100
   isMouseDown: 0
   line_points: []
